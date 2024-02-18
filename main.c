@@ -6,7 +6,7 @@
 /*   By: kmatsuka <kmatsuka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 21:59:07 by kmatsuka          #+#    #+#             */
-/*   Updated: 2024/02/18 14:48:40 by kmatsuka         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:42:26 by kmatsuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,18 @@ int	main(int argc, char *argv[])
 {
 	//void	*mlx;
 	//void	*mlx_win;
-	char	**map;
+	t_map	*data;
 
-	map = my_handle_map(argc, argv);	
+	data = malloc(sizeof(t_map));
+	if (!data)
+		my_system_error();
+	my_handle_map(argc, argv, data);
+	
 	int	i = -1;
-	while (map[++i])
-		ft_printf("%s\n", map[i]);
+	while ((data->map)[++i])
+		ft_printf("%s\n", (data->map)[i]);
+	ft_printf("height is %d\n", data->height);
+	ft_printf("width is %d\n", data->width);
 
 	// //initialize mlx
 	// mlx = mlx_init();

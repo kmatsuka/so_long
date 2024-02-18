@@ -6,7 +6,7 @@
 /*   By: kmatsuka <kmatsuka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 21:58:58 by kmatsuka          #+#    #+#             */
-/*   Updated: 2024/02/18 14:30:36 by kmatsuka         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:25:57 by kmatsuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,26 @@ typedef struct s_map
 	int		height;
 }	t_map;
 
-char	**my_handle_map(int argc, char *argv[]);
+typedef struct s_count_elems
+{
+	int	p;
+	int	e;
+	int	c;
+	int	invalid;
+}	t_count_elems;
 
-int		my_check_argument(int argc, char *argv[]);
-void	my_system_error(void);
+//handle_map
+void	my_handle_map(int argc, char *argv[], t_map *data);
+
+//input_map
+int		my_count_words(char **strs);
+char	**my_input_map(int fd);
+
+//message_error
 void	my_message_error(int n);
+void	my_system_error(void);
 
+//error_map
+void	my_error_map(t_map *data);
 
 #endif

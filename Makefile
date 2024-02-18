@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = main.c input_map.c error_map.c
+SRCS = main.c handle_map.c input_map.c message_error.c error_map.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT = ./libft/libft.a

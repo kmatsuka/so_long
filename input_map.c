@@ -6,21 +6,11 @@
 /*   By: kmatsuka <kmatsuka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 14:10:07 by kmatsuka          #+#    #+#             */
-/*   Updated: 2024/02/18 14:50:11 by kmatsuka         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:14:58 by kmatsuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	my_count_words(char **strs)
-{
-	int	count;
-
-	count = 0;
-	while (strs[count++])
-		;
-	return (count);
-}
 
 static char	**my_add_strarray(char **strs, char *str)
 {
@@ -55,7 +45,17 @@ static void	my_delete_nl(char *str)
 		str[ind] = '\0';
 }
 
-static char	**my_input_map(int fd)
+int	my_count_words(char **strs)
+{
+	int	count;
+
+	count = 0;
+	while (strs[count++])
+		;
+	return (count);
+}
+
+char	**my_input_map(int fd)
 {
 	char	**map;
 	char	*str;
@@ -73,17 +73,5 @@ static char	**my_input_map(int fd)
 		str = get_next_line(fd);
 	}
 	free(str);
-	return (map);
-}
-
-char	**my_handle_map(int argc, char *argv[])
-{
-	char	**map;
-	int		fd;
-
-	fd = my_check_argument(argc, argv);
-	map = my_input_map(fd);
-	
-	close(fd);
 	return (map);
 }
