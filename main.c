@@ -6,7 +6,7 @@
 /*   By: kmatsuka <kmatsuka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 21:59:07 by kmatsuka          #+#    #+#             */
-/*   Updated: 2024/02/18 15:42:26 by kmatsuka         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:15:38 by kmatsuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	main(int argc, char *argv[])
 	int	i = -1;
 	while ((data->map)[++i])
 		ft_printf("%s\n", (data->map)[i]);
-	ft_printf("height is %d\n", data->height);
-	ft_printf("width is %d\n", data->width);
+
 
 	// //initialize mlx
 	// mlx = mlx_init();
