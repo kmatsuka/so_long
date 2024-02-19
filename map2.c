@@ -6,22 +6,22 @@
 /*   By: kmatsuka <kmatsuka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 14:10:07 by kmatsuka          #+#    #+#             */
-/*   Updated: 2024/02/18 15:14:58 by kmatsuka         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:02:10 by kmatsuka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	**my_add_strarray(char **strs, char *str)
+static char	**add_strarray(char **strs, char *str)
 {
 	char	**new;
 	int		count;
 	int		i;
 
-	count = my_count_words(strs);
+	count = count_words(strs);
 	new = malloc(sizeof(char *) * (count + 1));
 	if (!new)
-		my_system_error();
+		exit(1);
 	i = -1;
 	while (++i < count - 1)
 	{
@@ -34,7 +34,7 @@ static char	**my_add_strarray(char **strs, char *str)
 	return (new);
 }
 
-static void	my_delete_nl(char *str)
+static void	delete_nl(char *str)
 {
 	int	ind;
 	
@@ -45,7 +45,7 @@ static void	my_delete_nl(char *str)
 		str[ind] = '\0';
 }
 
-int	my_count_words(char **strs)
+int	count_words(char **strs)
 {
 	int	count;
 
@@ -55,20 +55,20 @@ int	my_count_words(char **strs)
 	return (count);
 }
 
-char	**my_input_map(int fd)
+char	**input_map(int fd)
 {
 	char	**map;
 	char	*str;
 
-	map = malloc(sizeof(char *) * 1);
+	map = malloc(sizeof(char *));
 	if (!map)
-		my_system_error();
+		exit(1);
 	map[0] = NULL;
 	str = get_next_line(fd);
 	while (str)
 	{
-		my_delete_nl(str);
-		map = my_add_strarray(map, str);
+		delete_nl(str);
+		map = add_strarray(map, str);
 		free(str);
 		str = get_next_line(fd);
 	}
